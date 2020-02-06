@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -20,6 +21,18 @@ const Card = styled.div`
     -website-user-select: none;
     user-select: none;
     -o-user-select: none;
+`;
+
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+    &:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+        text-decoration: none;
+    }
 `;
 
 export default class PokemonCard extends Component {
@@ -47,6 +60,7 @@ componentDidMount(){
     render() {   
         return (
             <div className='col-md-3 col-sm-6 mb-5'>
+                <StyledLink to={`pokemon/${this.state.pokemonIndex}`}>
                 <Card className="card">              
                         <h5 className="card-header">{this.state.pokemonIndex}</h5>
                         {this.state.imageLoading ? (
@@ -77,6 +91,7 @@ componentDidMount(){
                             </h6>
                         </div>
                 </Card>
+                </StyledLink>
             </div>
         )
     }
