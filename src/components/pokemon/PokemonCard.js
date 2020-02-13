@@ -48,7 +48,6 @@ componentDidMount(){
     const {name, url} = this.props;
     const pokemonIndex = url.split("/")[url.split('/').length -2];
     const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`;
-
     this.setState({
         name: name, 
         imageUrl: imageUrl,
@@ -71,6 +70,7 @@ componentDidMount(){
                         onLoad={() => this.setState({imageLoading: false})}
                         onError={() => this.setState({toManyRequests: true})}
                         src={this.state.imageUrl}
+                        //src = "../pokemon/66.png"
                         style={
                             this.state.toManyRequests ? {display: "none"} :
                             this.state.imageLoading ? null : {display: "block"}
